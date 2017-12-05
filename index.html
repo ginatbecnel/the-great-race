@@ -1,0 +1,86 @@
+<html>
+<head>
+
+<style>
+  body {
+    background-image: url('http://static.panoramio.com/photos/large/45687765.jpg');
+    background-position: center top;
+
+  }
+
+</style>
+<script>
+
+<title>The Great Race</title>
+
+  //decalre variables
+
+  var ranLeng; 		//random length
+  var ranNum; 		//random number
+  var leng1;		 //length for p1
+  var leng2;		//length for p2
+  var pos1 = 0;		 //position for p1
+  var pos2 = 0; 		//position for p2
+  var inter;		 //interval variable
+
+//restart race
+
+  function resetRace() {
+    window.location.reload();
+  }
+
+//start race
+
+  function startRace() {
+
+    inter = setInterval(startRace, 500);
+    ranNum = Math.floor(Math.random() * 1);
+    ranLeng = Math.floor(Math.random() * 8);
+
+    if (ranNum == 0) {
+      leng1 = pos1 + ranLeng;
+      pos1 += ranLeng;
+      document.getElementById("playerOne").style.left = leng1 + "px";
+    }
+    
+    else if (ranNum == 1) {
+      var leng2 = pos2 + ranLeng;
+      pos2 += ranLeng;
+      document.getElementById("playerTwo").style.left = leng2 + "px";
+    }
+
+ //winner banners
+
+    if (pos1 == 500) {
+      alert("Player One Wins!!");
+      stopPlayer();
+    } else if (pos2 == 500) {
+      alert("Player Two Wins!!");
+      stopPlayer();
+    }
+
+    function stopPlayer() {
+      clearInterval(inter);
+    }
+  }
+
+</script>
+
+
+
+
+<body>
+
+  <img style="width:150px; height:inherit; position:absolute; top:400px;" src="https://orig00.deviantart.net/ce01/f/2017/061/5/8/super_mario_world_golden_flower_sprite_by_adventuresmg64gaming-db10h07.png" id="playerOne" />
+  <img style="width:150px; height:inherit; position:absolute; top:600px;" src="https://orig00.deviantart.net/df73/f/2017/061/3/4/super_mario_world_ice_flower_sprite_by_adventuresmg64gaming-db10hau.png" id="playerTwo" />
+  <img style="width:200px; height:inherit; position:absolute; right:0px; cursor:pointer;" src="https://orig00.deviantart.net/3747/f/2017/062/5/8/super_mario_world_mushroom_sprite_by_adventuresmg64gaming-db12tjs.png" id="resetButton" onclick="resetRace()" />
+  <img style="width:200px; height:inherit; cursor:pointer;" src="https://orig00.deviantart.net/77ce/f/2017/062/b/d/super_mario_world_modern_1_up_mushroom_sprite_by_adventuresmg64gaming-db10mv9.png" id="startButton" onclick="startRace()" />
+
+</body>
+
+
+
+
+</head>
+
+</html>
